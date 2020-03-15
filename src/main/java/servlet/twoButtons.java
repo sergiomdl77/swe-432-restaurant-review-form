@@ -28,15 +28,15 @@ import javax.servlet.http.*;
 // private void PrintTail (PrintWriter out) --> Prints the HTML bottom
 //***********************************************************************
 @WebServlet(
-        name = "MyServlet",
+        name = "MyServlet2",
         urlPatterns = {"/twoButtons"}
     )
 public class twoButtons extends HttpServlet
 {
 
 // Location of servlet.
-static String Domain  = "cs.gmu.edu:8443";
-static String Path    = "/offutt/servlet/";
+static String Domain  = "https://swe432-assignment6.herokuapp.com";
+static String Path    = "/";
 static String Servlet = "twoButtons";
 
 // Button labels
