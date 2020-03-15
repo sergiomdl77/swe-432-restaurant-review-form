@@ -6,6 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
   <script>
     var servletURL = window.location.origin + "/hello";
+    var servletURL2 = window.location.origin + "/twoButtons";
+    var servletURL3 = window.location.origin + "/restaurantForm";
   </script>
 <title>First JSP</title>
 </head>
@@ -13,7 +15,9 @@
 <body>
 <h2>Hello Heroku! I am JSP</h2>
 <strong>Current Time is</strong>: <%=new Date() %>
-<button onclick="window.location.assign(servletURL);"> Try the servlet </button>
+<button onclick="window.location.assign(servletURL);"> Try the Hello servlet </button>
+<button onclick="window.location.assign(servletURL2);"> Try the TwoButtons servlet </button>
+<button onclick="window.location.assign(servletURL3);"> Try the Restaurant Form (Assignment 6) servlet </button>
 
 </body>
 </html>
