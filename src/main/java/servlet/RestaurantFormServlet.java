@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,6 +29,8 @@ public class RestaurantFormServlet extends HttpServlet {
 	static String bootstrapStyles = "http://mason.gmu.edu/~thoward9/Form_Assignment/SWE432-Form/bootstrap-css/bootstrap.min.css";
 	static String bootstrapGridStyles = "http://mason.gmu.edu/~thoward9/Form_Assignment/SWE432-Form/bootstrap-css/bootstrap-grid.min.css.css";
     
+	static String formJs = "http://mason.gmu.edu/~thoward9/Form_Assignment/SWE432-Form/form.js";
+	
 	/** *****************************************************
 	 *  Overrides HttpServlet's doGet().
 	 *  Prints an HTML page with a blank form.
@@ -46,8 +49,17 @@ public class RestaurantFormServlet extends HttpServlet {
 	 *  and echoes the result to the user.
 	********************************************************* */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		// get all of the parameters sent to the server
+		Enumeration<String> requestParameters = request.getParameterNames();
+		
+		// get the response printer ready
+		response.setContentType("text/html");
+	    PrintWriter out = response.getWriter();
+	    
+	    // print the results page
+	    PrintHead(out);
+	    PrintBody(out, request, requestParameters);
+	    PrintTail(out);
 	}
 	
 	/** *****************************************************
@@ -78,7 +90,7 @@ public class RestaurantFormServlet extends HttpServlet {
 	   out.println("");
 	   out.println(" <br>");
 	   out.println("</form>");
-	   out.println("");
+	   out.println("<script type=\"text/javascript\" src=\"" + formJs + "\"></script>");
 	   out.println("</body>");
 	} 
 	
@@ -87,9 +99,45 @@ public class RestaurantFormServlet extends HttpServlet {
 	 *  Prints the results page, 
 	 *  echoing the form data to the user.
 	********************************************************* */
-	private void PrintBody (PrintWriter out, String result)
+	private void PrintBody (PrintWriter out, HttpServletRequest request, Enumeration<String> parameters)
 	{
 	   out.println("<body>");
+	   out.println("<h1>Form Results Page</h1>");
+	   out.println("");
+	   out.println("<table>");
+	   
+	   // print table header
+	   out.println("<tr>");
+	   out.println("<td>");
+	   out.println("Parameter Name");
+	   out.println("</td>");
+	   out.println("");
+	   out.println("<td>");
+	   out.println("Value");
+	   out.println("</td>");
+	   out.println("</tr>");
+	   out.println("");
+	   
+	   // iteratively print out rows for each parameter/value pair
+	   while (parameters.hasMoreElements()) {
+		   String parameterName = parameters.nextElement();
+		   String parameterValue = request.getParameter(parameterName);
+		   
+		   out.println("<tr>");
+		   out.println("<td>");
+		   out.println(parameterName);
+		   out.println("</td>");
+		   out.println("");
+		   out.println("<td>");
+		   out.println(parameterValue);
+		   out.println("</td>");
+		   out.println("</tr>");
+		   out.println("");
+	   }
+	   
+	   out.println("</table>");
+	   out.println("");
+	   out.println("<script type=\"text/javascript\" src=\"" + formJs + "\"></script>");
 	   out.println("</body>");
 	} 
 
