@@ -25,11 +25,11 @@ public class RestaurantFormServlet extends HttpServlet {
 	static String Path    = "/";
 	static String Servlet = "restaurantForm";
 	
-	static String formStyles = "http://mason.gmu.edu/~thoward9/Form_Assignment/SWE432-Form/form.css";
-	static String bootstrapStyles = "http://mason.gmu.edu/~thoward9/Form_Assignment/SWE432-Form/bootstrap-css/bootstrap.min.css";
-	static String bootstrapGridStyles = "http://mason.gmu.edu/~thoward9/Form_Assignment/SWE432-Form/bootstrap-css/bootstrap-grid.min.css.css";
+	static String formStyles = "/webapp/resources/css/form.css";
+	static String bootstrapStyles = "/webapp/resources/css/bootstrap.min.css";
+	static String bootstrapGridStyles = "/webapp/resources/css/bootstrap-grid.min.css.css";
     
-	static String formJs = "http://mason.gmu.edu/~thoward9/Form_Assignment/SWE432-Form/form.js";
+	static String formJs = "/webapp/resources/js/form.js";
 	
 	/** *****************************************************
 	 *  Overrides HttpServlet's doGet().
@@ -38,8 +38,8 @@ public class RestaurantFormServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 	    PrintWriter out = response.getWriter();
-	    PrintHead(out);
-	    PrintBody(out);
+	    PrintHead(out, request);
+	    PrintBody(out, request);
 	    PrintTail(out);
 	}
 
@@ -57,7 +57,7 @@ public class RestaurantFormServlet extends HttpServlet {
 	    PrintWriter out = response.getWriter();
 	    
 	    // print the results page
-	    PrintHead(out);
+	    PrintHead(out, request);
 	    PrintBody(out, request, requestParameters);
 	    PrintTail(out);
 	}
@@ -65,16 +65,18 @@ public class RestaurantFormServlet extends HttpServlet {
 	/** *****************************************************
 	 *  Prints the <head> of the HTML page, no <body>.
 	********************************************************* */
-	private void PrintHead (PrintWriter out)
+	private void PrintHead (PrintWriter out, HttpServletRequest request)
 	{
+	   String context = request.getContextPath();
+		
 	   out.println("<html>");
 	   out.println("");
 
 	   out.println("<head>");
 	   out.println("<title>Rate Restaurants on Campus</title>");
-	   out.println(" <link rel=\"stylesheet\" type=\"text/css\" href=\"" + formStyles + "\">");
-	   out.println(" <link rel=\"stylesheet\" type=\"text/css\" href=\"" + bootstrapStyles + "\">");
-	   out.println(" <link rel=\"stylesheet\" type=\"text/css\" href=\"" + bootstrapGridStyles + "\">");
+	   out.println(" <link rel=\"stylesheet\" type=\"text/css\" href=\"" + context + formStyles + "\">");
+	   out.println(" <link rel=\"stylesheet\" type=\"text/css\" href=\"" + context + bootstrapStyles + "\">");
+	   out.println(" <link rel=\"stylesheet\" type=\"text/css\" href=\"" + context + bootstrapGridStyles + "\">");
 	   out.println("</head>");
 	   out.println("");
 	} 
@@ -82,15 +84,17 @@ public class RestaurantFormServlet extends HttpServlet {
 	/** *****************************************************
 	 *  Prints the <BODY> of the HTML page. Blank form.
 	********************************************************* */
-	private void PrintBody (PrintWriter out)
+	private void PrintBody (PrintWriter out, HttpServletRequest request)
 	{
+	   String context = request.getContextPath();
+	   
 	   out.println("<body>");
 	   out.print  ("<form method=\"post\"");
 	   out.println(" action=\"https://" + Domain + Path + Servlet + "\">");
 	   out.println("");
 	   out.println(" <br>");
 	   out.println("</form>");
-	   out.println("<script type=\"text/javascript\" src=\"" + formJs + "\"></script>");
+	   out.println("<script type=\"text/javascript\" src=\"" + context + formJs + "\"></script>");
 	   out.println("</body>");
 	} 
 	
@@ -101,6 +105,8 @@ public class RestaurantFormServlet extends HttpServlet {
 	********************************************************* */
 	private void PrintBody (PrintWriter out, HttpServletRequest request, Enumeration<String> parameters)
 	{
+	   String context = request.getContextPath();
+		
 	   out.println("<body>");
 	   out.println("<h1>Form Results Page</h1>");
 	   out.println("");
@@ -137,7 +143,7 @@ public class RestaurantFormServlet extends HttpServlet {
 	   
 	   out.println("</table>");
 	   out.println("");
-	   out.println("<script type=\"text/javascript\" src=\"" + formJs + "\"></script>");
+	   out.println("<script type=\"text/javascript\" src=\"" + context + formJs + "\"></script>");
 	   out.println("</body>");
 	} 
 
