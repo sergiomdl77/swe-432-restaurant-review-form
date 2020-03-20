@@ -25,11 +25,11 @@ public class RestaurantFormServlet extends HttpServlet {
 	static String Path    = "/";
 	static String Servlet = "restaurantForm";
 	
-	static String formStyles = "/webapp/resources/css/form.css";
-	static String bootstrapStyles = "/webapp/resources/css/bootstrap.min.css";
-	static String bootstrapGridStyles = "/webapp/resources/css/bootstrap-grid.min.css.css";
+	static String formStyles = "/resources/css/form.css";
+	static String bootstrapStyles = "/resources/css/bootstrap.min.css";
+	static String bootstrapGridStyles = "/resources/css/bootstrap-grid.min.css.css";
     
-	static String formJs = "/webapp/resources/js/form.js";
+	static String formJs = "/resources/js/form.js";
 	
 	/** *****************************************************
 	 *  Overrides HttpServlet's doGet().
