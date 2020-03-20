@@ -230,13 +230,9 @@ public class RestaurantFormServlet extends HttpServlet {
 	   
 	   // print table header
 	   out.println("			<tr>");
-	   out.println("				<td>");
-	   out.println("					Parameter Name");
-	   out.println("				</td>");
+	   out.println("				<td>Parameter Name</td>");
 	   out.println("");
-	   out.println("				<td>");
-	   out.println("					Value");
-	   out.println("				</td>");
+	   out.println("				<td>Value</td>");
 	   out.println("			</tr>");
 	   out.println("");
 	   
@@ -246,13 +242,9 @@ public class RestaurantFormServlet extends HttpServlet {
 		   String parameterValue = request.getParameter(parameterName);
 		   
 		   out.println("			<tr>");
-		   out.println("				<td>");
-		   out.println(parameterName);
-		   out.println("				</td>");
+		   out.println("				<td>" + parameterName + "</td>");
 		   out.println("");
-		   out.println("				<td>");
-		   out.println(parameterValue);
-		   out.println("				</td>");
+		   out.println("				<td>" + parameterValue + "</td>");
 		   out.println("			</tr>");
 		   out.println("");
 	   }
