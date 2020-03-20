@@ -92,7 +92,7 @@ public class RestaurantFormServlet extends HttpServlet {
            	out.println("        <div class=\"text-center\">");
         	out.println("            <h1>Rate Restaurants on Campus</h1>");
         	out.println("            <p class=\"f-09\">Form by Tanya Howard and Sergio Delgado</p>");
-        	out.println("            <form id=\"restaurantForm\" method=\"post\" action=\"" + Domain + Path + Servlet + "\">");
+        	out.println("            <form id=\"restaurantForm\" method=\"post\" action=\"" + Path + Servlet + "\">");
         	out.println("                <fieldset class=\"centerFieldset\">");
         	out.println("                    <legend>Personal Information</legend>");
         	out.println("                    <div>");
