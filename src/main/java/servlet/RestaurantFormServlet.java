@@ -229,7 +229,7 @@ public class RestaurantFormServlet extends HttpServlet {
 	   out.println("		<table>");
 	   
 	   // print table header
-	   out.println("			<th>");
+	   out.println("			<tr>");
 	   out.println("				<td>");
 	   out.println("					Parameter Name");
 	   out.println("				</td>");
@@ -237,7 +237,7 @@ public class RestaurantFormServlet extends HttpServlet {
 	   out.println("				<td>");
 	   out.println("					Value");
 	   out.println("				</td>");
-	   out.println("			</th>");
+	   out.println("			</tr>");
 	   out.println("");
 	   
 	   // iteratively print out rows for each parameter/value pair

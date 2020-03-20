@@ -30,11 +30,11 @@ table {
 tbody {
 	border: 2px solid black;
 }
-th {
-	background-color: pink;
-}
 tr {
 	background-color: lemonchiffon;
+}
+tr:first-child {
+	background-color: pink;
 }
 tr, th {
 	border-bottom: 2px solid black;
