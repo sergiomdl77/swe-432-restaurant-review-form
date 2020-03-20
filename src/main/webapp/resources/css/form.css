@@ -1,4 +1,4 @@
-/* put css rules here */
+/* form page */
 body.container {
     padding: 20px 10px;
 }
@@ -21,4 +21,28 @@ textarea {
 }
 .f-09 {
     font-size: 0.9rem;
+}
+
+/* Results page */
+table {
+	width: 100%;
+}
+tbody {
+	border: 2px solid black;
+}
+th {
+	background-color: pink;
+}
+tr {
+	background-color: lemonchiffon;
+}
+tr, th {
+	border-bottom: 2px solid black;
+}
+td {
+	border-right: 2px solid black;
+	padding: 5px;
+}
+th td:first-child, tr td:first-child {
+	width: 30%;
 }

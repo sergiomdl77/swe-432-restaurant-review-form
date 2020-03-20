@@ -223,13 +223,13 @@ public class RestaurantFormServlet extends HttpServlet {
 	{
 	   String context = request.getContextPath();
 		
-	   out.println("	<body  class=\"container\">");
+	   out.println("	<body  class=\"container text-center\">");
 	   out.println("		<h1>Form Results Page</h1>");
 	   out.println("");
 	   out.println("		<table>");
 	   
 	   // print table header
-	   out.println("			<tr>");
+	   out.println("			<th>");
 	   out.println("				<td>");
 	   out.println("					Parameter Name");
 	   out.println("				</td>");
@@ -237,7 +237,7 @@ public class RestaurantFormServlet extends HttpServlet {
 	   out.println("				<td>");
 	   out.println("					Value");
 	   out.println("				</td>");
-	   out.println("			</tr>");
+	   out.println("			</th>");
 	   out.println("");
 	   
 	   // iteratively print out rows for each parameter/value pair
