@@ -123,6 +123,8 @@ private void PrintHead (PrintWriter out)
 private void PrintBody (PrintWriter out, String lhs, String rhs, String rslt)
 {
    out.println("<body>");
+   out.println("<h1>Servlet deployment test</h1>");
+   out.println("<p>by Tanya Howard</p>");
    out.println("<p>");
    out.println("A simple example that demonstrates how to operate with");
    out.println("multiple submit buttons.");
