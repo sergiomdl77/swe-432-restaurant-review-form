@@ -71,7 +71,6 @@ public class RestaurantFormServlet extends HttpServlet {
 		
 	   out.println("<html>");
 	   out.println("");
-
 	   out.println("	<head>");
 	   out.println("		<title>Rate Restaurants on Campus</title>");
 	   out.println("		<link rel=\"stylesheet\" type=\"text/css\" href=\"" + context + formStyles + "\">");
