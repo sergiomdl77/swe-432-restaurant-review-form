@@ -20,29 +20,16 @@ import javax.servlet.http.HttpServletResponse;
     )
 public class RestaurantFormServletV2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	// Location of servlet.
-	static String Domain  = "swe432-assignment6.herokuapp.com";
-	static String Path    = "/";
-	static String Servlet = "restaurantForm2";
 	
 	static String indexPage = "/resources/restaurantForm/index.html";
-	
-	static String formStyles = "/resources/css/form.css";
-	static String bootstrapStyles = "/resources/css/bootstrap.min.css";
-	static String bootstrapGridStyles = "/resources/css/bootstrap-grid.min.css.css";
-    
-	static String formJs = "/resources/js/form.js";
+	static String resultsPage = "/resources/restaurantForm/results.html";
 	
 	/** *****************************************************
 	 *  Overrides HttpServlet's doGet().
 	 *  Prints an HTML page with a blank form.
 	********************************************************* */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//response.setContentType("text/html");
-	    //PrintWriter out = response.getWriter();
 	    RequestDispatcher view = request.getRequestDispatcher(indexPage);
-
         view.forward(request, response); 
 	}
 
@@ -55,9 +42,9 @@ public class RestaurantFormServletV2 extends HttpServlet {
 		// get all of the parameters sent to the server
 		Enumeration<String> requestParameters = request.getParameterNames();
 		
-		// get the response printer ready
-		response.setContentType("text/html");
-	    PrintWriter out = response.getWriter();
-	    
+		// todo: find a way to pass parameters to the results page?
+		
+		RequestDispatcher view = request.getRequestDispatcher(resultsPage);
+        view.forward(request, response); 
 	}
 }
