@@ -22,7 +22,7 @@ public class RestaurantFormServletV2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	static String indexPage = "/resources/restaurantForm/index.html";
-	static String resultsPage = "/resources/restaurantForm/results.html";
+	static String resultsPage = "/resources/restaurantForm/results.jsp";
 	
 	/** *****************************************************
 	 *  Overrides HttpServlet's doGet().
@@ -43,6 +43,10 @@ public class RestaurantFormServletV2 extends HttpServlet {
 		Enumeration<String> requestParameters = request.getParameterNames();
 		
 		// todo: find a way to pass parameters to the results page?
+		//while (requestParameters.hasMoreElements()) {
+		//	String parameterName = requestParameters.nextElement();
+		//	String parameterValue = request.getParameter(parameterName);
+	    //}
 		
 		RequestDispatcher view = request.getRequestDispatcher(resultsPage);
         view.forward(request, response); 
