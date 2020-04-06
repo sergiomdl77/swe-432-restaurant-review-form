@@ -42,11 +42,13 @@ public class RestaurantFormServletV2 extends HttpServlet {
 		// get all of the parameters sent to the server
 		Enumeration<String> requestParameters = request.getParameterNames();
 		
-		// todo: find a way to pass parameters to the results page?
-		//while (requestParameters.hasMoreElements()) {
-		//	String parameterName = requestParameters.nextElement();
-		//	String parameterValue = request.getParameter(parameterName);
-	    //}
+		// set parameters to be forwarded to the results.jsp page
+		while (requestParameters.hasMoreElements()) {
+			String parameterName = requestParameters.nextElement();
+			String parameterValue = request.getParameter(parameterName);
+			
+			request.setAttribute(parameterName, parameterValue);
+	    }
 		
 		RequestDispatcher view = request.getRequestDispatcher(resultsPage);
         view.forward(request, response); 
