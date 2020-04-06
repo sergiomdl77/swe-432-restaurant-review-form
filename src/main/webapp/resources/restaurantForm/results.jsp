@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.min.css"> 
         <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-grid.min.css.css">
     </head>
-    <%@ page import="java.util.Enumeration;" %>
+    <%@ page import="java.util.Enumeration" %>
     <body class="container">
         <div class="text-center">
         	<h1>Form Results Page</h1>
