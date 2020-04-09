@@ -69,6 +69,7 @@ public class RestaurantFormServletV2 extends HttpServlet {
        out.println("        <link rel=\"stylesheet\" type=\"text/css\" href=\"" + context + formStyles + "\">");
        out.println("        <link rel=\"stylesheet\" type=\"text/css\" href=\"" + context + bootstrapStyles + "\">");
        out.println("        <link rel=\"stylesheet\" type=\"text/css\" href=\"" + context + bootstrapGridStyles + "\">");
+	    
        out.println("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js\" charset="utf-8"></script>");
        out.println("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js\" charset="utf-8"></script>");
        out.println("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js\" charset=\"utf-8\"></script>");
@@ -200,7 +201,6 @@ public class RestaurantFormServletV2 extends HttpServlet {
        out.println("");
        out.println("        <!-- put script at the bottom of the body so it can run after the page is instantiated -->");
        out.println("        <script type=\"text/javascript\" src=\"" + context + formJs + "\"></script> ");
-
 
        out.println("       )                                          ");
        out.println("    }                                             ");
