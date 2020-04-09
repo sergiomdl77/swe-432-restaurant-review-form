@@ -119,7 +119,6 @@ class Form extends React.Component {
                 <input type="reset" id="resetButton" className="mr-3" value="Clear Answers"/>
                 <input type="submit" id="submitButton" value="Submit Review"/>
             </form>
-            <script type="text/javascript" src="/resources/js/form.js"></script>
         </div>
 		  
             );
@@ -129,3 +128,24 @@ class Form extends React.Component {
         <Form />,
         document.getElementById('root')
     );
+    
+    var form;
+
+    (function() {
+        form = document.getElementById("restaurantForm");
+        focusOnFirstInput();
+        addGreatButtonListener();
+    })();
+
+    function focusOnFirstInput() {
+        document.getElementById("pName").focus(); // focus on first input element
+    }
+    function addGreatButtonListener() {
+        document.getElementById("greatButton").addEventListener("click", rateEverything);
+    }
+    function rateEverything() {
+        document.getElementById("cust5").checked = true;
+        document.getElementById("speed5").checked = true;
+        document.getElementById("quality5").checked = true;
+        document.getElementById("price5").checked = true;
+    }
