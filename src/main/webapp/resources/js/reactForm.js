@@ -122,7 +122,7 @@ class Form extends React.Component {
             </form>
         </div>
 		<script type="text/javascript" src="/resources/js/form.js"></script>  
-		<React.Fragment>
+		</React.Fragment>
             );
         }
     }
