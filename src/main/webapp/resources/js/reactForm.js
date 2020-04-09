@@ -63,7 +63,7 @@ class Form extends React.Component {
                                 <input type="radio" name="customerService" id="cust4" value="4" required/><label htmlFor="cust4">4</label>
                                 <input type="radio" name="customerService" id="cust5" value="5" required/><label htmlFor="cust5">5</label>
                             </div>
-                            <div className="3"></div>
+                            <div className="col-3"></div>
                         </div>
                         <div className="d-flex">
                             <div className="col-3"></div>
@@ -77,7 +77,7 @@ class Form extends React.Component {
                                 <input type="radio" name="speed" id="speed4" value="4" required/><label htmlFor="speed4">4</label>
                                 <input type="radio" name="speed" id="speed5" value="5" required/><label htmlFor="speed5">5</label>
                             </div>
-                            <div className="3"></div>
+                            <div className="col-3"></div>
                         </div>
                         <div className="d-flex">
                             <div className="col-3"></div>
@@ -91,7 +91,7 @@ class Form extends React.Component {
                                 <input type="radio" name="quality" id="quality4" value="4" required/><label htmlFor="quality4">4</label>
                                 <input type="radio" name="quality" id="quality5" value="5" required/><label htmlFor="quality5">5</label>
                             </div>
-                            <div className="3"></div>
+                            <div className="col-3"></div>
                         </div>
                         <div className="d-flex">
                             <div className="col-3"></div>
@@ -105,8 +105,22 @@ class Form extends React.Component {
                                 <input type="radio" name="price" id="price4" value="4" required/><label htmlFor="price4">4</label>
                                 <input type="radio" name="price" id="price5" value="5" required/><label htmlFor="price5">5</label>
                             </div>
-                            <div className="3"></div>
+                            <div className="col-3"></div>
                         </div>
+                        <div className="d-flex">
+	                        <div className="col-3"></div>
+	                        <div className="col-3">
+	                            <p>Variety of Menu: </p>
+	                        </div>
+	                        <div className="col-3 text-nowrap">
+	                            <input type="radio" name="variety" id="variety1" value="1" required/><label htmlFor="variety1">1</label>
+	                            <input type="radio" name="variety" id="variety2" value="2" required/><label htmlFor="variety2">2</label>
+	                            <input type="radio" name="variety" id="variety3" value="3" required/><label htmlFor="variety3">3</label>
+	                            <input type="radio" name="variety" id="variety4" value="4" required/><label htmlFor="variety4">4</label>
+	                            <input type="radio" name="variety" id="variety5" value="5" required/><label htmlFor="variety5">5</label>
+	                        </div>
+	                        <div className="col-3"></div>
+	                    </div>
                         <div className="d-flex">
                             <div className="col-12">
                                 <label className="d-block">Other Comments (optional): </label>
@@ -148,4 +162,5 @@ class Form extends React.Component {
         document.getElementById("speed5").checked = true;
         document.getElementById("quality5").checked = true;
         document.getElementById("price5").checked = true;
+        document.getElementById("variety5").checked = true;
     }

@@ -27,7 +27,7 @@ textarea {
 table {
 	width: 100%;
 }
-tbody {
+/*tbody {
 	border: 2px solid black;
 }
 tr {
@@ -45,4 +45,4 @@ td {
 }
 th td:first-child, tr td:first-child {
 	width: 30%;
-}
+}*/

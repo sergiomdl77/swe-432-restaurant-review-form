@@ -15,11 +15,15 @@
     <body class="container">
         <div class="text-center">
         	<h1>Form Results Page</h1>
-	   		<table>
-		   		<tr>
-		   			<td>Parameter Name</td>
-		   			<td>Value</td>
-	   			</tr>
+        	<p class="font-italic f-09">Thank you for submitting the form.</p>
+	   		<table class="table table-bordered table-hover">
+	   		<caption>Submitted form information.</caption>
+		   		<thead class="thead-light">
+		   			<tr>
+		   				<th>Parameter Name</th>
+		   				<th>Value</th>
+		   			</tr>
+	   			</thead>
 	   			<%
 	   			Enumeration<String> parameters = request.getParameterNames();
 	   			while (parameters.hasMoreElements()) {
