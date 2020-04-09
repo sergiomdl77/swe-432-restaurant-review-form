@@ -1,7 +1,7 @@
 class Form extends React.Component {
         render() {
              return( 
-
+        <React.Fragment>
         <div className="text-center">
             <h1>Rate Restaurants on Campus</h1>
             <p className="f-09">Form by Tanya Howard and Sergio Delgado</p>
@@ -122,7 +122,7 @@ class Form extends React.Component {
             </form>
         </div>
 		<script type="text/javascript" src="/resources/js/form.js"></script>  
-
+		<React.Fragment>
             );
         }
     }
