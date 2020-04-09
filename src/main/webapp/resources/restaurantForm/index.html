@@ -1,85 +1,158 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>In Class Exercise on React.js</title>
+    <title>Rate Restaurants on Campus</title>
+    
+<!-- custom css -->
+    <link rel="stylesheet" type="text/css" href="/resources/css/form.css"> 
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.min.css"> 
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-grid.min.css.css">
+
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js" charset="utf-8"></script>
 
-    <style>
-        .quiz {
-            display: block;
-            background: linear-gradient(to bottom, #2a86d6 0%,#7db9e8 100%);
-            padding: 40px;
-            color: #ffffff;
-        }
 
-        .quiz button {
-            display: block;
-            margin-bottom: 10px;
-            color: #000000;
-        }
-
-        .quiz .correct {
-            background-color: #ffffff;
-            padding: 5px;
-            color: #11AF08;
-            font-weight: bold;
-        }
-
-        .quiz .incorrect {
-            background-color: #ffffff;
-            padding: 5px;
-            color: #FF0C0C;
-            font-weight: bold;
-        }
-    </style>
 
     <script type="text/babel">
-    class Quiz extends React.Component {
-        constructor(props) {
-            super(props);
-            this.state = {
-                correct: null
-            };
-        }
-
-        answer(correct) {
-            this.setState({
-                correct
-            });
-        }
-
+    class Form extends React.Component {
         render() {
-            let question = null;
-            if (this.state.correct === null) {
-                question = <div>
-                    <button onClick={() => this.answer(true)}>a) I am loving it!</button>
-                    <button onClick={() => this.answer(false)}>b) I am hating it!</button>
-                </div>;
-            }
-            let answer = null;
-            if (this.state.correct === true) {
-                answer = <div className="correct">That is great!  Me too!</div>;
-            } else if (this.state.correct === false) {
-                answer = <div className="incorrect">Don't worry! It will grow on you.</div>;
-            }
+             return 
 
-            return <div className="quiz">
-                <p>How are you liking react.js so far?</p>
-                {question}
-                {answer}
-            </div>;
+        <div className="text-center">
+            <h1>Rate Restaurants on Campus</h1>
+            <p className="f-09">Form by Tanya Howard and Sergio Delgado</p>
+            <form id="restaurantForm" method="post" action="restaurantForm2">
+                <fieldset className="centerFieldset">
+                    <legend>Personal Information</legend>
+                    <div>
+                        <p className="font-italic f-09">Please provide some information about yourself.</p>
+                        <div>
+                            <label for="pName">Name:</label>
+                            <input type="text" id="pName" name="pName" maxlength="20" className="input-box">
+                            <label for="pAge">Age:</label>
+                            <input type="number" id="pAge" name="pAge" max="200" maxlength="4" className="input-box">
+                            <div className="radio-button-div"> 
+                                <label>Gender: </label>
+                                <input type="radio" name="pGender" id="genderMale" value="male" required><label for="genderMale">Male</label>
+                                <input type="radio" name="pGender" id="genderFemale" value="female" required><label for="genderFemale">Female</label>
+                                <input type="radio" name="pGender" id="genderOther" value="other" required><label for="genderOther">Other</label>
+                                <input type="text" id="pOtherGender" name="pOtherGender" placeholder="Other gender" maxlength="15" className="input-box">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Restaurant Information</legend>
+                    <div>
+                        <p className="font-italic f-09">Please provide information about the restaurant you visited on campus.</p>
+                        <div>
+                            <label for="rName">Name:</label>
+                            <input type="text" id="rName" name="rName" maxlength="20" className="input-box" required>
+                            <label for="rVisit">Date of Visit:</label>
+                            <input type="date" id="rVisit" name="rVisit" className="input-box" min="2000-01-01" max="2020-12-31" required>
+                            <div className="radio-button-div"> 
+                                <label>Time of Visit: </label>
+                                <input type="radio" name="vTime" id="timeBreakfast" value="Breakfast" required><label for="timeBreakfast">Breakfast</label>
+                                <input type="radio" name="vTime" id="timeLunch" value="Lunch" required><label for="timeLunch">Lunch</label>
+                                <input type="radio" name="vTime" id="timeDinner" value="Dinner" required><label for="timeDinner">Dinner</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Review</legend>
+                    <div>
+                        <p className="font-italic f-09">Please rate each category from 1 to 5 based on your experience (1 being the worst rating, 5 being the best rating).</p>
+                        <div>
+                            <input type="button" id="greatButton" value="Everything was great!">
+                            <p className="f-09">Rate everything as a 5.</p>
+                        </div>
+                        <div className="d-flex">
+                            <div className="col-3"></div>
+                            <div className="col-3">
+                                <p>Customer Service: </p>
+                            </div>
+                            <div className="col-3 text-nowrap">
+                                <input type="radio" name="customerService" id="cust1" value="1" required><label for="cust1">1</label>
+                                <input type="radio" name="customerService" id="cust2" value="2" required><label for="cust2">2</label>
+                                <input type="radio" name="customerService" id="cust3" value="3" required><label for="cust3">3</label>
+                                <input type="radio" name="customerService" id="cust4" value="4" required><label for="cust4">4</label>
+                                <input type="radio" name="customerService" id="cust5" value="5" required><label for="cust5">5</label>
+                            </div>
+                            <div className="3"></div>
+                        </div>
+                        <div className="d-flex">
+                            <div className="col-3"></div>
+                            <div className="col-3">
+                                <p>Speed of Service: </p>
+                            </div>
+                            <div className="col-3 text-nowrap">
+                                <input type="radio" name="speed" id="speed1" value="1" required><label for="speed1">1</label>
+                                <input type="radio" name="speed" id="speed2" value="2" required><label for="speed2">2</label>
+                                <input type="radio" name="speed" id="speed3" value="3" required><label for="speed3">3</label>
+                                <input type="radio" name="speed" id="speed4" value="4" required><label for="speed4">4</label>
+                                <input type="radio" name="speed" id="speed5" value="5" required><label for="speed5">5</label>
+                            </div>
+                            <div className="3"></div>
+                        </div>
+                        <div className="d-flex">
+                            <div className="col-3"></div>
+                            <div className="col-3">
+                                <p>Quality of Food: </p>
+                            </div>
+                            <div className="col-3 text-nowrap">
+                                <input type="radio" name="quality" id="quality1" value="1" required><label for="quality1">1</label>
+                                <input type="radio" name="quality" id="quality2" value="2" required><label for="quality2">2</label>
+                                <input type="radio" name="quality" id="quality3" value="3" required><label for="quality3">3</label>
+                                <input type="radio" name="quality" id="quality4" value="4" required><label for="quality4">4</label>
+                                <input type="radio" name="quality" id="quality5" value="5" required><label for="quality5">5</label>
+                            </div>
+                            <div className="3"></div>
+                        </div>
+                        <div className="d-flex">
+                            <div className="col-3"></div>
+                            <div className="col-3">
+                                <p>Price: </p>
+                            </div>
+                            <div className="col-3 text-nowrap">
+                                <input type="radio" name="price" id="price1" value="1" required><label for="price1">1</label>
+                                <input type="radio" name="price" id="price2" value="2" required><label for="price2">2</label>
+                                <input type="radio" name="price" id="price3" value="3" required><label for="price3">3</label>
+                                <input type="radio" name="price" id="price4" value="4" required><label for="price4">4</label>
+                                <input type="radio" name="price" id="price5" value="5" required><label for="price5">5</label>
+                            </div>
+                            <div className="3"></div>
+                        </div>
+                        <div className="d-flex">
+                            <div className="col-12">
+                                <label className="d-block">Other Comments (optional): </label>
+                                <textarea name="comments" className="w-50 mb-3" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                
+                <input type="reset" id="resetButton" className="mr-3" value="Clear Answers">
+                <input type="submit" id="submitButton" value="Submit Review">
+            </form>
+        </div>
+
+            ;
         }
     }
     ReactDOM.render(
-        <Quiz />,
-        document.getElementById('quiz')
+        <Form />,
+        document.getElementById('root')
     );
     </script>
 </head>
+    
 <body>
-    <div id="quiz"></div>
+    <div id="root"></div>
+   	<script type="text/javascript" src="/resources/js/form.js"></script>   
 </body>
 </html>
