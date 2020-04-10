@@ -16,7 +16,7 @@
         <div class="text-center">
         	<h1>Form Results Page</h1>
         	<p class="font-italic f-09">Thank you for submitting the form.</p>
-	   		<table class="table table-sm table-bordered table-hover table-dark">
+	   		<table class="table table-sm table-bordered table-hover">
 		   		<thead class="thead-light">
 		   			<tr>
 		   				<th>Parameter Name</th>
