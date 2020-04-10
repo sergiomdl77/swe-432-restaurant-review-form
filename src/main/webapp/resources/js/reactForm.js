@@ -110,7 +110,7 @@ class Form extends React.Component {
                         <div className="d-flex">
 	                        <div className="col-3"></div>
 	                        <div className="col-3">
-	                            <p>Variety of Menu: </p>
+	                            <p>Menu Variety: </p>
 	                        </div>
 	                        <div className="col-3 text-nowrap">
 	                            <input type="radio" name="variety" id="variety1" value="1" required/><label htmlFor="variety1">1</label>
