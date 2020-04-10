@@ -13,7 +13,7 @@ class Form extends React.Component {
                             <label htmlFor="pName">Name:</label>
                             <input type="text" id="pName" name="pName" maxLength="20" className="input-box" required/>
                             <label htmlFor="pAge">Age:</label>
-                            <input type="number" id="pAge" name="pAge" max="200" maxLength="4" className="input-box" required/>
+                            <input type="number" id="pAge" name="pAge" min="1" max="200" maxLength="4" className="input-box" required/>
                             <div className="radio-button-div"> 
                                 <label>Gender: </label>
                                 <input type="radio" name="pGender" id="genderMale" value="male" required/><label htmlFor="genderMale">Male</label>
