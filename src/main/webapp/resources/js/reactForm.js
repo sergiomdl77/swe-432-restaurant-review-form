@@ -11,9 +11,9 @@ class Form extends React.Component {
                         <p className="font-italic f-09">Please provide some information about yourself.</p>
                         <div>
                             <label htmlFor="pName">Name:</label>
-                            <input type="text" id="pName" name="pName" maxLength="20" className="input-box"/>
+                            <input type="text" id="pName" name="pName" maxLength="20" className="input-box" required/>
                             <label htmlFor="pAge">Age:</label>
-                            <input type="number" id="pAge" name="pAge" max="200" maxLength="4" className="input-box"/>
+                            <input type="number" id="pAge" name="pAge" max="200" maxLength="4" className="input-box" required/>
                             <div className="radio-button-div"> 
                                 <label>Gender: </label>
                                 <input type="radio" name="pGender" id="genderMale" value="male" required/><label htmlFor="genderMale">Male</label>
