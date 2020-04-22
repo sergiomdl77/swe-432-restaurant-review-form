@@ -14,16 +14,16 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class RestaurantFormServlet
  */
 @WebServlet(
-        name = "RestaurantFormServlet",
-        urlPatterns = {"/restaurantForm"}
+        name = "RestaurantFormServletV3",
+        urlPatterns = {"/restaurantForm3"}
     )
-public class RestaurantFormServlet extends HttpServlet {
+public class RestaurantFormServletV3 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	// Location of servlet.
 	static String Domain  = "swe432-assignment6.herokuapp.com";
 	static String Path    = "/";
-	static String Servlet = "restaurantForm";
+	static String Servlet = "restaurantForm3";
 	
 	static String formStyles = "/resources/css/form.css";
 	static String bootstrapStyles = "/resources/css/bootstrap.min.css";
