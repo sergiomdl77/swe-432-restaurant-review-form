@@ -9,6 +9,7 @@
     var servletURL2 = window.location.origin + "/twoButtons";
     var servletURL3 = window.location.origin + "/restaurantForm";
     var servletURL4 = window.location.origin + "/restaurantForm2";
+    var servletURL5 = window.location.origin + "/restaurantForm3";
   </script>
 <title>First JSP</title>
 </head>
@@ -20,5 +21,6 @@
 <button onclick="window.location.assign(servletURL2);"> Try the TwoButtons servlet </button>
 <button onclick="window.location.assign(servletURL3);"> Try the Restaurant Form (Assignment 6) servlet </button>
 <button onclick="window.location.assign(servletURL4);"> Try the Restaurant Form (Assignment 7) ReactJS app </button>
+<button onclick="window.location.assign(servletURL5);"> Try the Restaurant Form (Assignment 8) servlet </button>
 </body>
 </html>
