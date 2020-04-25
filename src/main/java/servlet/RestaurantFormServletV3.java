@@ -174,7 +174,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
 	 *  and echoes the result to the user.
 	********************************************************* */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		   EntriesManager entriesManager = new EntriesManager();
+//		   EntriesManager entriesManager = new EntriesManager();
 
  //      boolean ok = entriesManager.save();
 		
