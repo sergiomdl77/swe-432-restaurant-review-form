@@ -71,7 +71,7 @@ private class EntriesManager{
         try {
           connection = connection == null ? getConnection() : connection;
           statement = connection.prepareStatement(
-            "INSERT INTO entries (name, age) values ('Orlando', 70)"
+//            "INSERT INTO entries (name, age) values ('Orlando', 70)"
 
 //            "INSERT INTO entries (name, age) values (?, ?)"
 //          );
