@@ -72,38 +72,35 @@ public class RestaurantFormServletV3 extends HttpServlet {
 						try	{
 							connection = connection == null ? getConnection() : connection;
 							
-							String insertQueryStr = "INSERT INTO reviews";
-							insertQueryStr+= "(pName, pAge, pGender, pOtherGender, rName, rVisit, ";
-							insertQueryStr+= " vTime, cutomerService, speed, quality, price, comments) ";
-							insertQueryStr+= "values (?,?,?,?,?,?,?,?,?,?,?,?)";
+							String insertQueryStr = "INSERT INTO reviews (pName, pAge, pGender, pOtherGender, rName, rVisit, vTime, cutomerService, speed, quality, price, comments) values (?,?,?,?,?,?,?,?,?,?,?,?)";     
 							
 							statement = connection.prepareStatement( insertQueryStr);
 							
 							Enumeration<String> parameters = request.getParameterNames();
 	   					while (parameters.hasMoreElements()) 
 							{
-				  			String parameterName = parameters.nextElement().toLowerCase();
+				  			String parameterName = parameters.nextElement();
 				   			String parameterValue = request.getParameter(parameterName);
 								
 								
-									if(parameterName.equals("pname"))
+									if(parameterName.equals("pName"))
 										statement.setString(1, parameterValue);
-									else if(parameterName.equals("page"))
+									else if(parameterName.equals("pAge"))
 									{
 										int intAge = Integer.parseInt(parameterValue);
 										statement.setInt(2, intAge);
 									}
-									else if(parameterName.equals("pgender"))
+									else if(parameterName.equals("pGender"))
 										statement.setString(3, parameterValue);
-									else if(parameterName.equals("pothergender"))
+									else if(parameterName.equals("pOtherGender"))
 										statement.setString(4, parameterValue);
-									else if(parameterName.equals("rname"))
+									else if(parameterName.equals("rName"))
 										statement.setString(5, parameterValue);
-									else if(parameterName.equals("rvisit"))
+									else if(parameterName.equals("rVisit"))
 										statement.setString(6, parameterValue);
-									else if(parameterName.equals("vtime"))
+									else if(parameterName.equals("vTime"))
 										statement.setString(7, parameterValue);
-									else if(parameterName.equals("customerservice"))
+									else if(parameterName.equals("customerService"))
 									{
 										int intCustSer = Integer.parseInt(parameterValue);
 										statement.setInt(8, intCustSer);
