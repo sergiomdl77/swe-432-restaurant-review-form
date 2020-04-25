@@ -61,12 +61,14 @@ public class RestaurantFormServletV3 extends HttpServlet {
 
 	
      		private class EntriesManager{
+					
       		private Connection getConnection()	throws URISyntaxException, SQLException {
           			String dbUrl = System.getenv("JDBC_DATABASE_URL");
           			return DriverManager.getConnection(dbUrl);
    		   	}
 	
-					public boolean save(Enumeration<String> parameters)
+		
+					public boolean save(HttpServletRequest request)
 					{
 					  PreparedStatement statement = null;
 						try	{
@@ -76,6 +78,8 @@ public class RestaurantFormServletV3 extends HttpServlet {
 							
 							statement = connection.prepareStatement( insertQueryStr);
 							
+  						Enumeration<String> parameters = request.getParameterNames();
+
 							int c = 1;
 	   					while (parameters.hasMoreElements()) 
 							{
@@ -154,9 +158,56 @@ public class RestaurantFormServletV3 extends HttpServlet {
         		}
 						return false;
 					} // end save method
-				} // end class EntriesManager
 				
-				
+	
+		      public String[][] getAllReviews()
+					{
+						String[][] reviewsTable = new String[200][12];
+						for (int i=0; i<200; i++)
+							for (int j=0; j<12; j++)
+								reviewsTable = "";
+					
+						Statement statement = null;
+  		      ResultSet entries = null;
+
+						try {
+      	  	  connection = connection == null ? getConnection() : connection;
+        	  	statement = connection.createStatement();
+          		entries = statement.executeQuery(
+            		"SELECT pName, pAge, pGender, pOtherGender, rName, rVisit, vTime, cutomerService, speed, quality, price, comments FROM reviews");
+					
+							reviewsCount = 0;
+  		        while (entries.next())
+							{
+								for (int i=1; i<=12; i++)
+								{
+									if (i==2 || i==8 || i==9 || i==10 || i==11)
+										reviewsTable[reviewsCount][i-1] = Integer(entries.getInt(i)).toString();
+									else
+										reviewsTable[reviewsCount][i-1] = entries.getString(i);
+								}
+								reviewsCount++;
+      	    	}
+							return reviewsTable;
+          	}// end of try
+					
+        		}catch(URISyntaxException uriSyntaxException){
+          		uriSyntaxException.printStackTrace();
+        		}
+        		catch (Exception exception) {
+          		exception.printStackTrace();
+        		}finally {
+          		 if (statement != null) {
+            	 	  try{
+              				statement.close();
+            		  }catch(SQLException sqlException){
+              		sqlException.printStackTrace();
+            		  }
+          	    }
+        	  }
+						return null;
+				 } // end of getAllReviews
+    } //end of class EntriesManager		
 				
 	/** *****************************************************
 	 *  Overrides HttpServlet's doGet().
