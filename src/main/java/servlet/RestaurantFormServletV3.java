@@ -66,7 +66,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
           			return DriverManager.getConnection(dbUrl);
    		   	}
 	
-					public boolean save()
+					public boolean save(HttpServletRequest request)
 					{
 					  PreparedStatement statement = null;
 						try	{
@@ -85,53 +85,46 @@ public class RestaurantFormServletV3 extends HttpServlet {
 				  			String parameterName = parameters.nextElement();
 				   			String parameterValue = request.getParameter(parameterName);
 								
-								switch(parameterName)
-								{
-									case "pName":
+								
+									if(strcmp(parameterName, "pName") == 0)
 										statement.setString(1, parameterValue);
-										break;
-									case "pAge":
+									else if(strcmp(parameterName, "pAge") == 0)
+									{
 										int intAge = Integer.parseInt(parameterValue);
 										statement.setInt(2, intAge);
-										break;
-									case "pGender":
+									}
+									else if(strcmp(parameterName,  "pGender") == 0)
 										statement.setString(3, parameterValue);
-										break;
-									case "pOtherGender":
+									else if(strcmp(parameterName,  "pOtherGender") == 0)
 										statement.setString(4, parameterValue);
-										break;
-									case "rName":
+									else if(strcmp(parameterName,  "rName") == 0)
 										statement.setString(5, parameterValue);
-										break;
-									case "rVisit":
+									else if(strcmp(parameterName,  "rVisit") == 0)
 										statement.setString(6, parameterValue);
-										break;
-									case "vTime":
+									else if(strcmp(parameterName,  "vTime") == 0)
 										statement.setString(7, parameterValue);
-										break;
-									case "customerService":
+									else if(strcmp(parameterName,  "customerService") == 0)
+									{
 										int intCustSer = Integer.parseInt(parameterValue);
 										statement.setInt(8, intCustSer);
-										break;
-									case "speed":
+									}
+									else if(strcmp(parameterName,  "speed") == 0)
+									{
 										int intSpeed = Integer.parseInt(parameterValue);
 										statement.setInt(9, intSpeed);
-										break;
-									case "quality":
+									}
+									else if(strcmp(parameterName,  "quality") == 0)
+									{
 										int intQuality = Integer.parseInt(parameterValue);
 										statement.setInt(10, intQuality);
-										break;
-									case "price":
+									}
+									else if(strcmp(parameterName,  "price") == 0)
+									{
 										int intPrice = Integer.parseInt(parameterValue);
 										statement.setInt(11, intPrice);
-										break;
-									case "comments":
+									}
+									else if(strcmp(parameterName,  "comments") == 0)
 										statement.setString(12, parameterValue);
-										break;
-
-									default:
-										return false;
-								} // end switch
 
 							} // end while
          			
@@ -176,9 +169,9 @@ public class RestaurantFormServletV3 extends HttpServlet {
 	 *  and echoes the result to the user.
 	********************************************************* */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		   EntriesManager entriesManager = new EntriesManager();
+		   EntriesManager entriesManager = new EntriesManager();
 
- //      boolean ok = entriesManager.save();
+       boolean ok = entriesManager.save(request);
 		
 		// get all of the parameters sent to the server
 		Enumeration<String> requestParameters = request.getParameterNames();
