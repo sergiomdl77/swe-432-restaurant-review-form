@@ -77,12 +77,23 @@ public class RestaurantFormServletV3 extends HttpServlet {
 							statement = connection.prepareStatement( insertQueryStr);
 							
 							Enumeration<String> parameters = request.getParameterNames();
+							int c = 1;
 	   					while (parameters.hasMoreElements()) 
 							{
 				  			String parameterName = parameters.nextElement();
 				   			String parameterValue = request.getParameter(parameterName);
 								
+								if (c==2 || c==8 || c==9 || c==10 || c==11)
+								{
+									int intValue = Integer.parseInt(parameterValue);
+									statement.setInt(c, intValue);
+								}
+								else
+									statement.setString(c, parameterValue);
 								
+								c++;	
+
+		/*						
 									if(parameterName.equals("pName"))
 										statement.setString(1, parameterValue);
 									else if(parameterName.equals("pAge"))
@@ -122,7 +133,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
 									}
 									else if(parameterName.equals("comments"))
 										statement.setString(12, parameterValue);
-
+*/	
 							} // end while
          			
 							statement.executeUpdate();
