@@ -60,7 +60,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
 	private static Connection connection = null;
 
 	
-     	private class EntriesManager{
+     		private class EntriesManager{
       		private Connection getConnection()	throws URISyntaxException, SQLException {
           			String dbUrl = System.getenv("JDBC_DATABASE_URL");
           			return DriverManager.getConnection(dbUrl);
@@ -84,7 +84,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
 							{
 				  			String parameterName = parameters.nextElement();
 				   			String parameterValue = request.getParameter(parameterName);
-/*								
+								
 								switch(parameterName)
 								{
 									case "pName":
@@ -132,10 +132,10 @@ public class RestaurantFormServletV3 extends HttpServlet {
 									default:
 										return false;
 								} // end switch
-*/
+
 							} // end while
          			
-//							statement.executeUpdate();
+							statement.executeUpdate();
 							return true;
 						} // end trying connection and insert query
 		        catch(URISyntaxException uriSyntaxException){
@@ -154,7 +154,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
         		}
 						return false;
 					} // end save method
-	
+				} // end class EntriesManager
 				
 				
 				
