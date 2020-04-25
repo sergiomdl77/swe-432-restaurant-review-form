@@ -86,44 +86,44 @@ public class RestaurantFormServletV3 extends HttpServlet {
 				   			String parameterValue = request.getParameter(parameterName);
 								
 								
-									if(strcmp(parameterName, "pName") == 0)
+									if(parameterName.equals("pName"))
 										statement.setString(1, parameterValue);
-									else if(strcmp(parameterName, "pAge") == 0)
+									else if(parameterName.equals("pAge"))
 									{
 										int intAge = Integer.parseInt(parameterValue);
 										statement.setInt(2, intAge);
 									}
-									else if(strcmp(parameterName,  "pGender") == 0)
+									else if(parameterName.equals("pGender"))
 										statement.setString(3, parameterValue);
-									else if(strcmp(parameterName,  "pOtherGender") == 0)
+									else if(parameterName.equals("pOtherGender"))
 										statement.setString(4, parameterValue);
-									else if(strcmp(parameterName,  "rName") == 0)
+									else if(parameterName.equals("rName"))
 										statement.setString(5, parameterValue);
-									else if(strcmp(parameterName,  "rVisit") == 0)
+									else if(parameterName.equals("rVisit"))
 										statement.setString(6, parameterValue);
-									else if(strcmp(parameterName,  "vTime") == 0)
+									else if(parameterName.equals("vTime"))
 										statement.setString(7, parameterValue);
-									else if(strcmp(parameterName,  "customerService") == 0)
+									else if(parameterName.equals("customerService"))
 									{
 										int intCustSer = Integer.parseInt(parameterValue);
 										statement.setInt(8, intCustSer);
 									}
-									else if(strcmp(parameterName,  "speed") == 0)
+									else if(parameterName.equals("speed"))
 									{
 										int intSpeed = Integer.parseInt(parameterValue);
 										statement.setInt(9, intSpeed);
 									}
-									else if(strcmp(parameterName,  "quality") == 0)
+									else if(parameterName.equals("quality"))
 									{
 										int intQuality = Integer.parseInt(parameterValue);
 										statement.setInt(10, intQuality);
 									}
-									else if(strcmp(parameterName,  "price") == 0)
+									else if(parameterName.equals("price"))
 									{
 										int intPrice = Integer.parseInt(parameterValue);
 										statement.setInt(11, intPrice);
 									}
-									else if(strcmp(parameterName,  "comments") == 0)
+									else if(parameterName.equals("comments"))
 										statement.setString(12, parameterValue);
 
 							} // end while
