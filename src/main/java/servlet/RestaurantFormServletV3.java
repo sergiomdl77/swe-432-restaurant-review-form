@@ -188,7 +188,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
 	 *  and echoes the result to the user.
 	********************************************************* */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		   EntriesManager entriesManager = new EntriesManager();
+		 EntriesManager entriesManager = new EntriesManager();
 
 		 boolean ok = entriesManager.save(request);
 		
@@ -367,7 +367,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
 	   String context = request.getContextPath();
 		
 	   out.println("	<body  class=\"container text-center\">");
-	   out.println("		<h1>Form Results Page</h1>");
+	   out.println("		<h1>Form Results Page (Sergio's version)</h1>");
 	   out.println("		<p class=\"font-italic f-09\">Thank you for submitting the form.</p>");
 	   out.println("		<table class=\"table table-sm table-bordered table-hover\">");
 	   
