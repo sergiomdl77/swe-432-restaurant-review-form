@@ -79,7 +79,7 @@ private class EntriesManager{
 //          statement.setInt(2, age);
 
 //	     "INSERT INTO reviews (pName, pAge, pGender, pOtherGender, rName, rVisit, vTime, cutomerService, speed, quality, price, comments) values ('Kristin',37,'female',' ','Legal Sea Foods','2020-02-02','Dinner',5,5,5,5,'Great Place')"
-	      "INSERT INTO reviews (pName, pAge, pGender, pOtherGender, rName, rVisit, vTime) values ('Erick',45,'male',' ','Legal Sea Foods', '2020-01-01','lunch')"	
+	      "INSERT INTO reviews (pName, pAge, pGender, pOtherGender, rName, rVisit, vTime, customerService, speed, quality, price) values ('Erick',45,'male',' ','Legal Sea Foods', '2020-01-01','lunch',5,5,5,5)"	
 	  );  
 		  
           statement.executeUpdate();
