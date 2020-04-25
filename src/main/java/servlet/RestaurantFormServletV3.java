@@ -55,11 +55,47 @@ public class RestaurantFormServletV3 extends HttpServlet {
 	static String bootstrapGridStyles = "/resources/css/bootstrap-grid.min.css.css";
     
 	static String formJs = "/resources/js/form.js";
-
 	
 	private static Connection connection = null;
-
+  static enum Data {AGE, NAME};
 	
+private class EntriesManager{
+      private Connection getConnection()
+        throws URISyntaxException, SQLException {
+          String dbUrl = System.getenv("JDBC_DATABASE_URL");
+          return DriverManager.getConnection(dbUrl);
+      }
+
+      public boolean save(String name, int age){
+        PreparedStatement statement = null;
+        try {
+          connection = connection == null ? getConnection() : connection;
+          statement = connection.prepareStatement(
+            "INSERT INTO entries (name, age) values (?, ?)"
+          );
+          statement.setString(1, name);
+          statement.setInt(2, age);
+          statement.executeUpdate();
+          return true;
+        }catch(URISyntaxException uriSyntaxException){
+          uriSyntaxException.printStackTrace();
+        }
+        catch (Exception exception) {
+          exception.printStackTrace();
+        }finally {
+          if (statement != null) {
+            try{
+              statement.close();
+            }catch(SQLException sqlException){
+              sqlException.printStackTrace();
+            }
+          }
+        }
+
+        return false;
+      }	
+	
+/*	
      		private class EntriesManager{
 					
       		private Connection getConnection()	throws URISyntaxException, SQLException {
@@ -75,12 +111,13 @@ public class RestaurantFormServletV3 extends HttpServlet {
 							connection = connection == null ? getConnection() : connection;
 							
 							String insertQueryStr = "INSERT INTO reviews (pName, pAge, pGender, pOtherGender, rName, rVisit, vTime, cutomerService, speed, quality, price, comments)"
-								                   + " values ('Kristin',37,'female',' ','Legal Sea Foods','2020-02-02','Dinner',5,5,5,5,'Great Place')";     
+																		 + " values (?,?,?,?,?,?,?,?,?,?,?,?)";
+		//						                   + " values ('Kristin',37,'female',' ','Legal Sea Foods','2020-02-02','Dinner',5,5,5,5,'Great Place')";     
 							
 							statement = connection.prepareStatement( insertQueryStr);
 							
   						Enumeration<String> parameters = request.getParameterNames();
-/*
+
 							int c = 1;
 	   					while (parameters.hasMoreElements()) 
 							{
@@ -98,7 +135,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
 								c++;	
 
 							} // end while
-*/         			
+         			
 							statement.executeUpdate();
 							return true;
 						} // end trying connection and insert query
@@ -169,6 +206,8 @@ public class RestaurantFormServletV3 extends HttpServlet {
 						return null;
 				 } // end of getAllReviews
     } //end of class EntriesManager		
+*/				
+				
 				
 	/** *****************************************************
 	 *  Overrides HttpServlet's doGet().
@@ -190,7 +229,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 EntriesManager entriesManager = new EntriesManager();
 
-		 boolean ok = entriesManager.save(request);
+		 boolean ok = entriesManager.save("Kristin", 37);
 		
 		// get all of the parameters sent to the server
 		 Enumeration<String> requestParameters = request.getParameterNames();
