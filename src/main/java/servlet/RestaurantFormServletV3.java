@@ -66,22 +66,32 @@ private class EntriesManager{
           return DriverManager.getConnection(dbUrl);
       }
 
-      public boolean save(String name, int age){
+      public boolean save(Enumeration<String> parameters){
         PreparedStatement statement = null;
         try {
           connection = connection == null ? getConnection() : connection;
           statement = connection.prepareStatement(
-//            "INSERT INTO entries (name, age) values ('Orlando', 70)"
-
-//            "INSERT INTO entries (name, age) values (?, ?)"
-//          );
-//          statement.setString(1, name);
-//          statement.setInt(2, age);
-
-//	     "INSERT INTO reviews (pName, pAge, pGender, pOtherGender, rName, rVisit, vTime, cutomerService, speed, quality, price, comments) values ('Kristin',37,'female',' ','Legal Sea Foods','2020-02-02','Dinner',5,5,5,5,'Great Place')"
-	      "INSERT INTO reviews (pName, pAge, pGender, pOtherGender, rName, rVisit, vTime, customerService, speed, quality, price, comments) values (?,?,?,?,?,?,?,?,?,?,?,?)" 
-	  );  
+	          "INSERT INTO reviews (pName, pAge, pGender, pOtherGender, rName, rVisit, vTime, customerService, speed, quality, price, comments) values (?,?,?,?,?,?,?,?,?,?,?,?)" 
+	           );  
 		
+					int c = 1;
+ 					while (parameters.hasMoreElements()) 
+					{
+				  			String parameterName = parameters.nextElement();
+				   			String parameterValue = request.getParameter(parameterName);
+								
+								if (c==2 || c==8 || c==9 || c==10 || c==11)
+								{
+									int intValue = Integer.parseInt(parameterValue);
+									statement.setInt(c, intValue);
+								}
+								else
+									statement.setString(c, parameterValue);
+								
+								c++;	
+
+					} // end while
+/*					
               statement.setString(1, "Kristin");
               statement.setInt(2, 37);
               statement.setString(3, "female");
@@ -94,7 +104,7 @@ private class EntriesManager{
               statement.setInt(10, 5);
               statement.setInt(11, 5);
               statement.setString(12, "Sweet");
-		  
+*/		  
           statement.executeUpdate();
           return true;
         }catch(URISyntaxException uriSyntaxException){
@@ -249,10 +259,12 @@ private class EntriesManager{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 EntriesManager entriesManager = new EntriesManager();
 
-		 boolean ok = entriesManager.save("Kristin", 37);
+	 	 Enumeration<String> requestParameters = request.getParameterNames();
+		
+		 boolean ok = entriesManager.save(requestParameters);
 		
 		// get all of the parameters sent to the server
-		 Enumeration<String> requestParameters = request.getParameterNames();
+    // Enumeration<String> requestParameters = request.getParameterNames();
 		
 		
 		// get the response printer ready
