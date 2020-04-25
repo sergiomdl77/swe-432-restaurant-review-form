@@ -74,12 +74,13 @@ public class RestaurantFormServletV3 extends HttpServlet {
 						try	{
 							connection = connection == null ? getConnection() : connection;
 							
-							String insertQueryStr = "INSERT INTO reviews (pName, pAge, pGender, pOtherGender, rName, rVisit, vTime, cutomerService, speed, quality, price, comments) values (?,?,?,?,?,?,?,?,?,?,?,?)";     
+							String insertQueryStr = "INSERT INTO reviews (pName, pAge, pGender, pOtherGender, rName, rVisit, vTime, cutomerService, speed, quality, price, comments)"
+								                   + " values ('Kristin',37,'female',' ','Legal Sea Foods','2020-02-02','Dinner',5,5,5,5,'Great Place')";     
 							
 							statement = connection.prepareStatement( insertQueryStr);
 							
   						Enumeration<String> parameters = request.getParameterNames();
-
+/*
 							int c = 1;
 	   					while (parameters.hasMoreElements()) 
 							{
@@ -97,7 +98,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
 								c++;	
 
 							} // end while
-         			
+*/         			
 							statement.executeUpdate();
 							return true;
 						} // end trying connection and insert query
