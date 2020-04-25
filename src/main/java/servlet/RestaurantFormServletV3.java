@@ -129,7 +129,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
       	  	  connection = connection == null ? getConnection() : connection;
         	  	statement = connection.createStatement();
           		entries = statement.executeQuery(
-            		"SELECT pName, pAge, pGender, pOtherGender, rName, rVisit, vTime, cutomerService, speed, quality, price, comments FROM reviews"
+            		"SELECT pName, pAge, pGender, pOtherGender, rName, rVisit, vTime, customerService, speed, quality, price, comments FROM reviews"
 							);
 					
 							reviewsCount = 0;
@@ -377,7 +377,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
 
 				for (int j=0; j<12; j++)
 				{
-						out.println("<td> Attribute " + reviewsTable[i][j] + "</td>");
+						out.println("<td> Attribute " + reviewsTable[i][j] + " </td>");
 				}
 				out.println("</tr>");
 		 }
