@@ -96,47 +96,6 @@ public class RestaurantFormServletV3 extends HttpServlet {
 								
 								c++;	
 
-		/*						
-									if(parameterName.equals("pName"))
-										statement.setString(1, parameterValue);
-									else if(parameterName.equals("pAge"))
-									{
-										int intAge = Integer.parseInt(parameterValue);
-										statement.setInt(2, intAge);
-									}
-									else if(parameterName.equals("pGender"))
-										statement.setString(3, parameterValue);
-									else if(parameterName.equals("pOtherGender"))
-										statement.setString(4, parameterValue);
-									else if(parameterName.equals("rName"))
-										statement.setString(5, parameterValue);
-									else if(parameterName.equals("rVisit"))
-										statement.setString(6, parameterValue);
-									else if(parameterName.equals("vTime"))
-										statement.setString(7, parameterValue);
-									else if(parameterName.equals("customerService"))
-									{
-										int intCustSer = Integer.parseInt(parameterValue);
-										statement.setInt(8, intCustSer);
-									}
-									else if(parameterName.equals("speed"))
-									{
-										int intSpeed = Integer.parseInt(parameterValue);
-										statement.setInt(9, intSpeed);
-									}
-									else if(parameterName.equals("quality"))
-									{
-										int intQuality = Integer.parseInt(parameterValue);
-										statement.setInt(10, intQuality);
-									}
-									else if(parameterName.equals("price"))
-									{
-										int intPrice = Integer.parseInt(parameterValue);
-										statement.setInt(11, intPrice);
-									}
-									else if(parameterName.equals("comments"))
-										statement.setString(12, parameterValue);
-*/	
 							} // end while
          			
 							statement.executeUpdate();
@@ -165,7 +124,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
 						String[][] reviewsTable = new String[200][12];
 						for (int i=0; i<200; i++)
 							for (int j=0; j<12; j++)
-								reviewsTable = "";
+								reviewsTable[i][j] = "";
 					
 						Statement statement = null;
   		      ResultSet entries = null;
@@ -191,7 +150,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
 							return reviewsTable;
           	}// end of try
 					
-        		}catch(URISyntaxException uriSyntaxException){
+        		catch(URISyntaxException uriSyntaxException){
           		uriSyntaxException.printStackTrace();
         		}
         		catch (Exception exception) {
@@ -203,7 +162,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
             		  }catch(SQLException sqlException){
               		sqlException.printStackTrace();
             		  }
-          	    }
+          	   }
         	  }
 						return null;
 				 } // end of getAllReviews
