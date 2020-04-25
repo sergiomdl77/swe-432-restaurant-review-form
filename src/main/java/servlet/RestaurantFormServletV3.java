@@ -71,10 +71,14 @@ private class EntriesManager{
         try {
           connection = connection == null ? getConnection() : connection;
           statement = connection.prepareStatement(
-            "INSERT INTO entries (name, age) values (?, ?)"
-          );
-          statement.setString(1, name);
-          statement.setInt(2, age);
+//            "INSERT INTO entries (name, age) values (?, ?)"
+//          );
+//          statement.setString(1, name);
+//          statement.setInt(2, age);
+	    "INSERT INTO reviews (pName, pAge, pGender, pOtherGender, rName, rVisit, vTime, cutomerService, speed, quality, price, comments)"
+		                 + " values ('Kristin',37,'female',' ','Legal Sea Foods','2020-02-02','Dinner',5,5,5,5,'Great Place')"
+	    );  
+		  
           statement.executeUpdate();
           return true;
         }catch(URISyntaxException uriSyntaxException){
