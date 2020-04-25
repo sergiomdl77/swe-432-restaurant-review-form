@@ -75,8 +75,7 @@ private class EntriesManager{
 //          );
 //          statement.setString(1, name);
 //          statement.setInt(2, age);
-	    "INSERT INTO reviews (pName, page, pgender, pothergender, rname, rvisit, vtime, cutomerservice, speed, quality, price, comments)"
-		                 + " values ('Kristin',37,'female',' ','Legal Sea Foods','2020-02-02','Dinner',5,5,5,5,'Great Place')"
+	    "INSERT INTO reviews (pname, page, pgender, pothergender, rname, rvisit, vtime, cutomerservice, speed, quality, price, comments) values ('Kristin',37,'female',' ','Legal Sea Foods','2020-02-02','Dinner',5,5,5,5,'Great Place')"
 	    );  
 		  
           statement.executeUpdate();
