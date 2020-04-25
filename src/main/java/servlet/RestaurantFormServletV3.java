@@ -66,7 +66,7 @@ private class EntriesManager{
           return DriverManager.getConnection(dbUrl);
       }
 
-      public boolean save(Enumeration<String> parameters){
+      public boolean save(Enumeration<String> parameters, HttpServletRequest request){
         PreparedStatement statement = null;
         try {
           connection = connection == null ? getConnection() : connection;
@@ -261,7 +261,7 @@ private class EntriesManager{
 
 	 	 Enumeration<String> requestParameters = request.getParameterNames();
 		
-		 boolean ok = entriesManager.save(requestParameters);
+		 boolean ok = entriesManager.save(requestParameters, request);
 		
 		// get all of the parameters sent to the server
     // Enumeration<String> requestParameters = request.getParameterNames();
