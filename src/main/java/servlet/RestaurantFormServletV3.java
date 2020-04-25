@@ -94,7 +94,7 @@ private class EntriesManager{
 
         return false;
       }	
-	
+    }// end of class EntriesManager	
 /*	
      		private class EntriesManager{
 					
