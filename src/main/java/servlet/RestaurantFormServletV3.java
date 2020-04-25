@@ -56,10 +56,10 @@ public class RestaurantFormServletV3 extends HttpServlet {
     
 	static String formJs = "/resources/js/form.js";
 	
+	private static int reviewsTotal = 0;
 	private static Connection connection = null;
-  static enum Data {AGE, NAME};
 	
-private class EntriesManager{
+  private class EntriesManager{
       private Connection getConnection()
         throws URISyntaxException, SQLException {
           String dbUrl = System.getenv("JDBC_DATABASE_URL");
@@ -91,23 +91,12 @@ private class EntriesManager{
 								c++;	
 
 					} // end while
-/*					
-              statement.setString(1, "Kristin");
-              statement.setInt(2, 37);
-              statement.setString(3, "female");
-              statement.setString(4, " ");
-              statement.setString(5, "Legal Sea Foods");
-              statement.setString(6, "2020-02-02");
-              statement.setString(7, "Dinner");
-              statement.setInt(8, 5);
-              statement.setInt(9, 5);
-              statement.setInt(10, 5);
-              statement.setInt(11, 5);
-              statement.setString(12, "Sweet");
-*/		  
+	  
           statement.executeUpdate();
+					reviewsTotal++;
           return true;
-        }catch(URISyntaxException uriSyntaxException){
+
+				}catch(URISyntaxException uriSyntaxException){
           uriSyntaxException.printStackTrace();
         }
         catch (Exception exception) {
@@ -124,68 +113,6 @@ private class EntriesManager{
 
         return false;
       }	
-    }// end of class EntriesManager	
-/*	
-     		private class EntriesManager{
-					
-      		private Connection getConnection()	throws URISyntaxException, SQLException {
-          			String dbUrl = System.getenv("JDBC_DATABASE_URL");
-          			return DriverManager.getConnection(dbUrl);
-   		   	}
-	
-		
-					public boolean save(HttpServletRequest request)
-					{
-					  PreparedStatement statement = null;
-						try	{
-							connection = connection == null ? getConnection() : connection;
-							
-							String insertQueryStr = "INSERT INTO reviews (pName, pAge, pGender, pOtherGender, rName, rVisit, vTime, cutomerService, speed, quality, price, comments)"
-																		 + " values (?,?,?,?,?,?,?,?,?,?,?,?)";
-		//						                   + " values ('Kristin',37,'female',' ','Legal Sea Foods','2020-02-02','Dinner',5,5,5,5,'Great Place')";     
-							
-							statement = connection.prepareStatement( insertQueryStr);
-							
-  						Enumeration<String> parameters = request.getParameterNames();
-
-							int c = 1;
-	   					while (parameters.hasMoreElements()) 
-							{
-				  			String parameterName = parameters.nextElement();
-				   			String parameterValue = request.getParameter(parameterName);
-								
-								if (c==2 || c==8 || c==9 || c==10 || c==11)
-								{
-									int intValue = Integer.parseInt(parameterValue);
-									statement.setInt(c, intValue);
-								}
-								else
-									statement.setString(c, parameterValue);
-								
-								c++;	
-
-							} // end while
-         			
-							statement.executeUpdate();
-							return true;
-						} // end trying connection and insert query
-		        catch(URISyntaxException uriSyntaxException){
-          		uriSyntaxException.printStackTrace();
-        		}
-        		catch (Exception exception) {
-          		exception.printStackTrace();
-        		}finally {
-          		if (statement != null) {
-            		try{
-              		statement.close();
-            		}catch(SQLException sqlException){
-              		sqlException.printStackTrace();
-            		}
-          		}
-        		}
-						return false;
-					} // end save method
-				
 	
 		      public String[][] getAllReviews()
 					{
@@ -202,7 +129,8 @@ private class EntriesManager{
       	  	  connection = connection == null ? getConnection() : connection;
         	  	statement = connection.createStatement();
           		entries = statement.executeQuery(
-            		"SELECT pName, pAge, pGender, pOtherGender, rName, rVisit, vTime, cutomerService, speed, quality, price, comments FROM reviews");
+            		"SELECT pName, pAge, pGender, pOtherGender, rName, rVisit, vTime, cutomerService, speed, quality, price, comments FROM reviews"
+							);
 					
 							reviewsCount = 0;
   		        while (entries.next())
@@ -235,8 +163,9 @@ private class EntriesManager{
         	  }
 						return null;
 				 } // end of getAllReviews
-    } //end of class EntriesManager		
-*/				
+
+	
+    }// end of class EntriesManager	
 				
 				
 	/** *****************************************************
@@ -268,7 +197,7 @@ private class EntriesManager{
 		
 		
 		// get the response printer ready
-		response.setContentType("text/html");
+		  response.setContentType("text/html");
 	    PrintWriter out = response.getWriter();
 	    
 		  // print the results page
@@ -435,8 +364,24 @@ private class EntriesManager{
 	********************************************************* */
 	private void PrintBody (PrintWriter out, HttpServletRequest request, Enumeration<String> parameters)
 	{
+		 EntriesManager entriesManager = new EntriesManager();
+  	 reviewsTable = entriesManager.getAllReviews();	
+		
 	   String context = request.getContextPath();
 		
+		 out.println("	<body>);
+		 out.println("	  <table>);
+		 for (int i=0; i<reviewsTotal; i++)
+				for (int j=0; j<12; j++)
+				{
+					 	out.println("<tr>);
+						out.println(" " +  reviewsTable[i][j] );						
+		 				out.println("</tr>);
+				}					 
+		 out.println("	  </table>);
+		 out.println("  </body>);
+		
+/*		
 	   out.println("	<body  class=\"container text-center\">");
 	   out.println("		<h1>Form Results Page (Sergio's version)</h1>");
 	   out.println("		<p class=\"font-italic f-09\">Thank you for submitting the form.</p>");
@@ -467,6 +412,7 @@ private class EntriesManager{
 	   out.println("");
 	   out.println("		<script type=\"text/javascript\" src=\"" + context + formJs + "\"></script>");
 	   out.println("	</body>");
+	*/
 	} 
 
 
