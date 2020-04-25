@@ -79,7 +79,9 @@ private class EntriesManager{
 //          statement.setInt(2, age);
 
 //	     "INSERT INTO reviews (pName, pAge, pGender, pOtherGender, rName, rVisit, vTime, cutomerService, speed, quality, price, comments) values ('Kristin',37,'female',' ','Legal Sea Foods','2020-02-02','Dinner',5,5,5,5,'Great Place')"
-	      "INSERT INTO reviews (pName, pAge, pGender, pOtherGender, rName, rVisit, vTime, customerService, speed, quality, price, comments) values (?,?,?,?,?,?,?,?,?,?,?,?)"	
+	      "INSERT INTO reviews (pName, pAge, pGender, pOtherGender, rName, rVisit, vTime, customerService, speed, quality, price, comments) values (?,?,?,?,?,?,?,?,?,?,?,?)" 
+	  );  
+		
               statement.setString(1, 'Kristin');
               statement.setInt(2, 37);
               statement.setString(3, 'female');
@@ -92,8 +94,6 @@ private class EntriesManager{
               statement.setInt(10, 5);
               statement.setInt(11, 5);
               statement.setString(12, 'Sweet');
-
-	  );  
 		  
           statement.executeUpdate();
           return true;
