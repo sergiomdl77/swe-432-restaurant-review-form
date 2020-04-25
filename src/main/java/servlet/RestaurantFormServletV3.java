@@ -372,12 +372,14 @@ public class RestaurantFormServletV3 extends HttpServlet {
 		 out.println("	<body>");
 		 out.println("	  <table>");
 		 for (int i=0; i<7; i++)
+		 {
+			 	out.println("<tr>");
+
 				for (int j=0; j<12; j++)
-				{
-					 	out.println("<tr>");
-						out.println(" " +  reviewsTable[i][j] );						
-		 				out.println("</tr>");
-				}					 
+						out.println(" " +  reviewsTable[i][j] );
+			 
+				out.println("</tr>");
+		 }
 		 out.println("	  </table>");
 		 out.println("  </body>");
 		
