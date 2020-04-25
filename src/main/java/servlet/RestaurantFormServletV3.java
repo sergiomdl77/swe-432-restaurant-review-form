@@ -55,9 +55,10 @@ public class RestaurantFormServletV3 extends HttpServlet {
 	static String bootstrapGridStyles = "/resources/css/bootstrap-grid.min.css.css";
     
 	static String formJs = "/resources/js/form.js";
-	
+
+/*	
 	private static Connection connection = null;
-	
+
 	
      	private class EntriesManager{
       		private Connection getConnection()	throws URISyntaxException, SQLException {
@@ -151,7 +152,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
           		}
         		}		
 					} // end save method
-	
+*/	
 				
 				
 				
