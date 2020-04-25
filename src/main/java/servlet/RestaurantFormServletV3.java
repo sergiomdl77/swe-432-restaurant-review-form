@@ -369,17 +369,17 @@ public class RestaurantFormServletV3 extends HttpServlet {
 		
 	   String context = request.getContextPath();
 		
-		 out.println("	<body>);
-		 out.println("	  <table>);
+		 out.println("	<body>");
+		 out.println("	  <table>");
 		 for (int i=0; i<reviewsTotal; i++)
 				for (int j=0; j<12; j++)
 				{
-					 	out.println("<tr>);
+					 	out.println("<tr>");
 						out.println(" " +  reviewsTable[i][j] );						
-		 				out.println("</tr>);
+		 				out.println("</tr>");
 				}					 
-		 out.println("	  </table>);
-		 out.println("  </body>);
+		 out.println("	  </table>");
+		 out.println("  </body>");
 		
 /*		
 	   out.println("	<body  class=\"container text-center\">");
