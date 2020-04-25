@@ -31,6 +31,105 @@ public class RestaurantFormServletV3 extends HttpServlet {
     
 	static String formJs = "/resources/js/form.js";
 	
+	private static Connection connection = null;
+	
+	
+     	private class EntriesManager{
+      		private Connection getConnection()	throws URISyntaxException, SQLException {
+          			String dbUrl = System.getenv("JDBC_DATABASE_URL");
+          			return DriverManager.getConnection(dbUrl);
+   		   	}
+	
+					public boolean save()
+					{
+					  PreparedStatement statement = null;
+						try	{
+							connection = connection == null ? getConnection() : connection;
+							
+							String insertQueryStr = "INSERT INTO reviews";
+							insertQueryStr+= "(pName, pAge, pGender, pOtherGender, rName, rVisit, ";
+							insertQueryStr+= " vTime, cutomerService, speed, quality, price, comments) ";
+							insertQueryStr+= "values(?,?,?,?,?,?,?,?,?,?,?,?)";
+							
+							statement = connection.prepareStatement( insertQueryStr);
+							
+							Enumeration<String> parameters = request.getParameterNames();
+	   					while (parameters.hasMoreElements()) 
+							{
+				  			String parameterName = parameters.nextElement();
+				   			String parameterValue = request.getParameter(parameterName);
+								
+								switch(parameterName)
+								{
+									case "pName":
+										statement.setString(1, parameterValue);
+										break;
+									case "pAge":
+										int intAge = Integer.parseInt(parameterValue);
+										statement.setInt(2, intAge);
+										break;
+									case "pGender":
+										statement.setString(3, parameterValue);
+										break;
+									case "pOtherGender":
+										statement.setString(4, parameterValue);
+										break;
+									case "rName":
+										statement.setString(5, parameterValue);
+										break;
+									case "rVisit":
+										statement.setString(6, parameterValue);
+										break;
+									case "vTime":
+										statement.setString(7, parameterValue);
+										break;
+									case "customerService":
+										int intCustSer = Integer.parseInt(parameterValue);
+										statement.setInt(8, intCustSer);
+										break;
+									case "speed":
+										int intSpeed = Integer.parseInt(parameterValue);
+										statement.setInt(9, intSpeed);
+										break;
+									case "quality":
+										int intQuality = Integer.parseInt(parameterValue);
+										statement.setInt(10, intQuality);
+										break;
+									case "price":
+										int intPrice = Integer.parseInt(parameterValue);
+										statement.setInt(11, intPrice);
+										break;
+									case "comments":
+										statement.setString(12, parameterValue);
+										break;
+
+									default:
+										return false;
+								} // end switch
+							} // end while
+         			
+							statement.executeUpdate();
+							return true;
+						} // end trying connection and insert query
+		        catch(URISyntaxException uriSyntaxException){
+          		uriSyntaxException.printStackTrace();
+        		}
+        		catch (Exception exception) {
+          		exception.printStackTrace();
+        		}finally {
+          		if (statement != null) {
+            		try{
+              		statement.close();
+            		}catch(SQLException sqlException){
+              		sqlException.printStackTrace();
+            		}
+          		}
+        		}		
+					} // end save method
+	
+				
+				
+				
 	/** *****************************************************
 	 *  Overrides HttpServlet's doGet().
 	 *  Prints an HTML page with a blank form.
@@ -49,6 +148,10 @@ public class RestaurantFormServletV3 extends HttpServlet {
 	 *  and echoes the result to the user.
 	********************************************************* */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		   EntriesManager entriesManager = new EntriesManager();
+
+       boolean ok = entriesManager.save();
+		
 		// get all of the parameters sent to the server
 		Enumeration<String> requestParameters = request.getParameterNames();
 		
@@ -56,7 +159,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
 		response.setContentType("text/html");
 	    PrintWriter out = response.getWriter();
 	    
-	    // print the results page
+		  // print the results page
 	    PrintHead(out, request);
 	    PrintBody(out, request, requestParameters);
 	    PrintTail(out);
