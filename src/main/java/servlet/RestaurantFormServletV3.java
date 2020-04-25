@@ -56,7 +56,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
     
 	static String formJs = "/resources/js/form.js";
 
-/*	
+	
 	private static Connection connection = null;
 
 	
@@ -84,7 +84,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
 							{
 				  			String parameterName = parameters.nextElement();
 				   			String parameterValue = request.getParameter(parameterName);
-								
+/*								
 								switch(parameterName)
 								{
 									case "pName":
@@ -132,9 +132,10 @@ public class RestaurantFormServletV3 extends HttpServlet {
 									default:
 										return false;
 								} // end switch
+*/
 							} // end while
          			
-							statement.executeUpdate();
+//							statement.executeUpdate();
 							return true;
 						} // end trying connection and insert query
 		        catch(URISyntaxException uriSyntaxException){
@@ -150,9 +151,10 @@ public class RestaurantFormServletV3 extends HttpServlet {
               		sqlException.printStackTrace();
             		}
           		}
-        		}		
+        		}
+						return false;
 					} // end save method
-*/	
+	
 				
 				
 				
