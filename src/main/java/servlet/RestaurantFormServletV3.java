@@ -46,8 +46,8 @@ public class RestaurantFormServletV3 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	// Location of servlet.
-	static String Domain  = "swe-432-review-form.herokuapp.com";
-	static String Path    = "/";
+	static String Domain  = "";
+	static String Path    = "";
 	static String Servlet = "restaurantForm3";
 	
 	static String formStyles = "/resources/css/form.css";
@@ -66,7 +66,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
           			return DriverManager.getConnection(dbUrl);
    		   	}
 	
-					public boolean save(HttpServletRequest request)
+					public boolean save(Enumeration<String> parameters)
 					{
 					  PreparedStatement statement = null;
 						try	{
@@ -76,7 +76,6 @@ public class RestaurantFormServletV3 extends HttpServlet {
 							
 							statement = connection.prepareStatement( insertQueryStr);
 							
-							Enumeration<String> parameters = request.getParameterNames();
 							int c = 1;
 	   					while (parameters.hasMoreElements()) 
 							{
@@ -179,10 +178,10 @@ public class RestaurantFormServletV3 extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		   EntriesManager entriesManager = new EntriesManager();
 
-       boolean ok = entriesManager.save(request);
-		
 		// get all of the parameters sent to the server
-		Enumeration<String> requestParameters = request.getParameterNames();
+		 Enumeration<String> requestParameters = request.getParameterNames();
+		
+		 boolean ok = entriesManager.save(requestParameters);
 		
 		// get the response printer ready
 		response.setContentType("text/html");
