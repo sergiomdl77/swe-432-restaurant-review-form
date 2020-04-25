@@ -175,7 +175,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		   EntriesManager entriesManager = new EntriesManager();
 
-       boolean ok = entriesManager.save();
+ //      boolean ok = entriesManager.save();
 		
 		// get all of the parameters sent to the server
 		Enumeration<String> requestParameters = request.getParameterNames();
