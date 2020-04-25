@@ -121,6 +121,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
 	
 		      public String[][] getAllReviews()
 					{
+						int reviewsCount;
 						String[][] reviewsTable = new String[200][12];
 						for (int i=0; i<200; i++)
 							for (int j=0; j<12; j++)
@@ -141,7 +142,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
 								for (int i=1; i<=12; i++)
 								{
 									if (i==2 || i==8 || i==9 || i==10 || i==11)
-										reviewsTable[reviewsCount][i-1] = Integer(entries.getInt(i)).toString();
+										reviewsTable[reviewsCount][i-1] = Integer.toString(entries.getInt(i));
 									else
 										reviewsTable[reviewsCount][i-1] = entries.getString(i);
 								}
@@ -188,10 +189,11 @@ public class RestaurantFormServletV3 extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		   EntriesManager entriesManager = new EntriesManager();
 
+		 boolean ok = entriesManager.save(request);
+		
 		// get all of the parameters sent to the server
 		 Enumeration<String> requestParameters = request.getParameterNames();
 		
-		 boolean ok = entriesManager.save(requestParameters);
 		
 		// get the response printer ready
 		response.setContentType("text/html");
