@@ -365,7 +365,7 @@ public class RestaurantFormServletV3 extends HttpServlet {
 	private void PrintBody (PrintWriter out, HttpServletRequest request, Enumeration<String> parameters)
 	{
 		 EntriesManager entriesManager = new EntriesManager();
-  	 reviewsTable = entriesManager.getAllReviews();	
+  	 String[][] reviewsTable = entriesManager.getAllReviews();	
 		
 	   String context = request.getContextPath();
 		
