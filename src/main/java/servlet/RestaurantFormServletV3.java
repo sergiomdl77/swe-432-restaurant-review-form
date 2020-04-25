@@ -85,7 +85,7 @@ private class EntriesManager{
               statement.setString(1, "Kristin");
               statement.setInt(2, 37);
               statement.setString(3, "female");
-              statement.setString(4, " '";
+              statement.setString(4, " ";
               statement.setString(5, "Legal Sea Foods");
               statement.setString(6, "2020-02-02");
               statement.setString(7, "Dinner");
